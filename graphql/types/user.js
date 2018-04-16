@@ -1,47 +1,47 @@
 import {
-	GraphQLObjectType,
-	GraphQLInputObjectType,
-	GraphQLNonNull,
-	GraphQLString,
-  GraphQLInt,
-	GraphQLID,
-	GraphQLList
+    GraphQLObjectType,
+    GraphQLInputObjectType,
+    GraphQLNonNull,
+    GraphQLString,
+    GraphQLInt,
+    GraphQLID,
+    GraphQLList
 } from 'graphql';
 
-import postModel from '../../models/post' ;
-import {postType} from './post' ;
+import postModel from '../../models/post';
+import { postType } from './post';
 
 export const userTYPE = new GraphQLObjectType({
-    name = 'User' ,
-    fields:()=>({
-        _id:{
-            type : new GraphQLNonNull(GraphQLID)
+    name = 'User',
+    fields: () => ({
+        _id: {
+            type: new GraphQLNonNull(GraphQLID)
         },
-        email:{
-            type:GraphQLString
+        email: {
+            type: GraphQLString
         },
         name: {
-            type : GraphQLString
+            type: GraphQLString
         },
-        posts : {
+        posts: {
             type: new GraphQLList(postType),
-			resolve(user) {
-				const { _id } = user
-				return PostModel.find({ uid: _id }).exec()
-			}
+            resolve(user) {
+                const { _id } = user
+                return PostModel.find({ uid: _id }).exec()
+            }
         },
     })
 })
 
 
 export const userInputType = new GraphQLInputObjectType({
-	name: 'UserInput',
-	fields: () => ({
-		email: {
-			type: GraphQLString
-		},
-		name: {
-			type: GraphQLString
-		}
-	})
+    name: 'UserInput',
+    fields: () => ({
+        email: {
+            type: GraphQLString
+        },
+        name: {
+            type: GraphQLString
+        }
+    })
 })
