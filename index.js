@@ -19,13 +19,12 @@ app.get('/',(req,res)=>{
 
 
 //GraphQL api endpoint 
-app.use('/graphql',graphqlHTTP(()=>
-({
-    schema ,
-    graphql : true ,
-    pretty : true
-}
-))) ;
+// GraphQL API
+app.use('/graphql', graphqlHTTP(() => ({
+    schema,
+    graphiql: true,
+    pretty: true
+  })))
 
 
 app.listen(5000,()=>{

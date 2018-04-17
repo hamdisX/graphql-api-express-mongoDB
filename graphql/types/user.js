@@ -11,8 +11,8 @@ import {
 import postModel from '../../models/post';
 import { postType } from './post';
 
-export const userTYPE = new GraphQLObjectType({
-    name = 'User',
+export const userType = new GraphQLObjectType({
+	name: 'User',
     fields: () => ({
         _id: {
             type: new GraphQLNonNull(GraphQLID)
